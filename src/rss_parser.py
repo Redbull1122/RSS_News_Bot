@@ -28,7 +28,7 @@ def load_json_url(url: str, timeout: int = 30) -> List[NewsItem]:
 
     news_items = []
 
-    for item in raw_data.get("articles", []):  # ✅ ключ articles, не items
+    for item in raw_data.get("articles", []):
         try:
             title = item.get("title", "Without title")
             summary = item.get("description") or item.get("content") or ""
