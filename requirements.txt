@@ -1,0 +1,15 @@
+langchain>=0.1.0
+openai>=1.0.0
+pydantic>=2.0
+feedparser
+requests
+beautifulsoup4
+python-dotenv
+scikit-learn
+numpy
+python-telegram-bot
+spacy
+langchain-ollama
+langchain-openai
+tensorflow
+
