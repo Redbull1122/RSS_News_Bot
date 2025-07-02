@@ -5,7 +5,7 @@ from sklearn.cluster import KMeans
 
 
 
-# 1. Функция: извлекаем тексты
+# Function: extracting texts
 def extract_texts(documents: List[Document]) -> List[str]:
     new_list = []
     for doc in documents:
@@ -13,18 +13,18 @@ def extract_texts(documents: List[Document]) -> List[str]:
             new_list.append(doc)
     return new_list
 
-# 2. Функция: векторизация
+#Function: vectorization
 def vectorize_texts(texts: List[str]):
     vectorizer = TfidfVectorizer()
     X = vectorizer.fit_transform(texts)
     return X
 
-# 3. Функция: кластеризация векторов
+#Function: vector clustering
 def cluster_vectors(X, num_clusters: int) -> List[int]:
     kmeans = KMeans(n_clusters=num_clusters, random_state=42).fit(X)
     return kmeans.labels_.tolist()
 
-# 4. Главная функция
+#Main Function
 def cluster_documents(documents: List[Document], num_clusters: int = 5) -> Dict[int, List[Document]]:
     texts = extract_texts(documents)
     X = vectorize_texts(texts)
