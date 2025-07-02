@@ -104,7 +104,7 @@ async def digest(update: Update, context: ContextTypes.DEFAULT_TYPE):
         # Generate summary
         summary = generate_summary_for_cluster([current_doc])
         if not summary:
-            summary = "Не удалось сгенерировать краткий дайджест."
+            summary = "Unable to generate a summary digest."
 
         # We receive a link
         url_value = current_doc.metadata.get('url')
@@ -113,7 +113,7 @@ async def digest(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         # Forming the text
         text = (
-            f"*News {news_index + 1} из {len(all_news)}*\n\n"
+            f"*News {news_index + 1} form {len(all_news)}*\n\n"
             f"*Title:* {escape_markdown(current_doc.metadata.get('title', 'No title'))}\n\n"
             f"{escape_markdown(summary)}\n\n"
             f"[Read all]({escape_markdown(url_value)})"
@@ -181,7 +181,7 @@ async def detail(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         first_url = matched_docs[0].metadata.get('url')
         if first_url:
-            detailed_summary += f"\n\n[Читать статью]({first_url})"
+            detailed_summary += f"\n\n[Read the article]({first_url})"
 
         escaped_text = escape_markdown(detailed_summary)
         await send_long_message(update, escaped_text)
